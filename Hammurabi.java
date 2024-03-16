@@ -173,7 +173,9 @@ public class Hammurabi {
             return 0;
         }
     }
-    //
+    //make a var to store rand int, use Random class .nextInt, set bound to 100 (bc its 0-99, 100 choices, represents percentages)
+    //if rand var is less than 15 (15%) return half pop
+    //else return 0 (bc didnt lose anyone)
 
 
 
