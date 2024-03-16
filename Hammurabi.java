@@ -208,6 +208,15 @@ public class Hammurabi {
     // howManyPeopleStarved / pop * 100, you need to type cast before division bc of ^^^^^^^^^^^^^^^^^^^^^^
     //if var is greater than 45, return true, else false
 
+    int immigrants(int population, int acresOwned, int grainInStorage){
+        int newImmigrants = (20 * acresOwned + grainInStorage) / (100 * population) + 1;
+        return newImmigrants;
+    }
+    //this was in the read me
+
+    int harvest(int acres, int bushelsUsedAsSeed){
+        //
+    }
 
 
 
