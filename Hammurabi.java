@@ -177,6 +177,10 @@ public class Hammurabi {
     //if rand var is less than 15 (15%) return half pop
     //else return 0 (bc didnt lose anyone)
 
+    int starvationDeaths(int population, int bushelsFedToPeople){
+        //
+    }
+
 
 
 
