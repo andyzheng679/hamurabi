@@ -29,7 +29,9 @@ public class Hammurabi {
 //            //
 //            year++;
 //        }
-        System.out.println(askHowManyAcresToBuy(landValue, grainInStorage));
+        //System.out.println(askHowManyAcresToBuy(landValue, grainInStorage));
+        //System.out.println(askHowManyAcresToSell(100));
+        System.out.println(askHowMuchGrainToFeedPeople(grainInStorage));
 
     }
 
@@ -52,10 +54,62 @@ public class Hammurabi {
                     validInput = true;
                 }
             }catch (InputMismatchException e){
-                System.out.println("\"" + scanner.next() + "\" isn't a number!");
+                System.out.println("\"" + scanner.next() + "\" isn't a number! Enter a number: ");
             }
         }
         return acresToBuy;
     }
+
+    int askHowManyAcresToSell(int acresOwned){
+        System.out.println("Enter how many acres you want to see: ");
+        int acresToSell = 0;
+        boolean validInput = false;
+
+        while(!validInput){
+            try {
+                acresToSell = scanner.nextInt();
+                if(acresToSell > acresOwned){
+                    System.out.println("You only have " + acresOwned + " , enter another amount: ");
+                }else {
+                    validInput = true;
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("\"" + scanner.next() + "\" isn't a number! Enter a number: ");
+            }
+        }
+        return acresToSell;
+    }
+
+    int askHowMuchGrainToFeedPeople(int bushels){
+        System.out.println("You have " + bushels + " bushels of grain in storage.");
+        System.out.println("It takes at least 20 bushels of grain per person per year to survive.");
+        System.out.println("How many bushels you want to give: ");
+
+        int bushelsToGive = 0;
+        boolean validInput = false;
+
+        while (!validInput){
+            try {
+                bushelsToGive = scanner.nextInt();
+                if(bushelsToGive > bushels){
+                    System.out.println("You only have " + bushels + " bushles of grain in storage, enter another amount: ");
+                }else{
+                    validInput = true;
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("\"" + scanner.next() + "\" isn't a number! Enter a number: ");
+            }
+        }
+        return bushelsToGive;
+    }
+
+
+
+
+
+
+
 
 }
