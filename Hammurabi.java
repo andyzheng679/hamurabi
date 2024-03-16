@@ -38,8 +38,12 @@ public class Hammurabi {
         //System.out.println(askHowManyAcresToBuy(landValue, grainInStorage));
         //System.out.println(askHowManyAcresToSell(100));
         //System.out.println(askHowMuchGrainToFeedPeople(grainInStorage));
-        System.out.println(askHowManyAcresToPlant(acresOfLand, startPeople, grainInStorage));
-
+        //System.out.println(askHowManyAcresToPlant(acresOfLand, startPeople, grainInStorage));
+        //System.out.println(plagueDeaths(startPeople));
+        //System.out.println(starvationDeaths(startPeople, 2000));
+        //System.out.println(starvationDeaths(startPeople, 1500));
+        System.out.println(uprising(startPeople, 20));
+        System.out.println(uprising(startPeople, 50));
     }
 
     //other methods go here
@@ -189,6 +193,20 @@ public class Hammurabi {
     //if number of people fed is greater or equals to pop, return 0 bc no one starved, min pop got feed, user can feed more
     //else, take pop and subtract the num of people that were fed, we're returning the number of people that died
 
+    boolean uprising(int population, int howManyPeopleStarved){ //how howManyPeopleStarved = starvationDeaths
+        double percentageOfPeopleDied = ((double) howManyPeopleStarved / population) * 100;
+
+        if(percentageOfPeopleDied > 45){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    //how howManyPeopleStarved = starvationDeaths, create a double var for % of people died
+    //you need a double bc for int, it disregards the fraction part, 50/100 is .50, for an int, it will be 0
+    // howManyPeopleStarved / pop * 100, you need to type cast before division bc of ^^^^^^^^^^^^^^^^^^^^^^
+    //if var is greater than 45, return true, else false
 
 
 
