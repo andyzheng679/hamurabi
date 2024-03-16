@@ -177,9 +177,19 @@ public class Hammurabi {
     //if rand var is less than 15 (15%) return half pop
     //else return 0 (bc didnt lose anyone)
 
-    int starvationDeaths(int population, int bushelsFedToPeople){
-        //
+    int starvationDeaths(int population, int bushelsFedToPeople){ //bushelsFedToPeople is askHowMuchGrainToFeedPeople
+        int numOfPeopleFed = bushelsFedToPeople / 20;
+        if(numOfPeopleFed >= population){
+            return 0;
+        }else{
+            return population - numOfPeopleFed;
+        }
     }
+    //bushelsFedToPeople is askHowMuchGrainToFeedPeople, create var to store people that were fed, each person need 20 bush per year
+    //if number of people fed is greater or equals to pop, return 0 bc no one starved, min pop got feed, user can feed more
+    //else, take pop and subtract the num of people that were fed, we're returning the number of people that died
+
+
 
 
 
