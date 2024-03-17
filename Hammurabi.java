@@ -107,6 +107,11 @@ public class Hammurabi {
             System.out.println("Rats destroyed " + hungryRats + " bushels, leaving " + grainInStorage + " bushels in storage.");
             System.out.println("The city owns " + acresOfLand + " acres of land.");
             System.out.println("Land is currently worth " + landValue + " bushels per acre.");
+            System.out.println("                                ");
+            System.out.println("                                ");
+            System.out.println("                                ");
+            System.out.println("                                ");
+            System.out.println("                                ");
 
 //            We harvested 3000 bushels at 3 bushels per acre.                          //all of this is pt 2, dont print at start of game
 //                Rats destroyed 200 bushels, leaving 2800 bushels in storage.
