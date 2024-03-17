@@ -239,6 +239,16 @@ public class Hammurabi {
         }
         return  0;
     }
+    //create var to store percentage, bound 100, 0-99
+    //if statement, if var less than 40, rat infestation
+    //if rat infestation, 10-30% of grains in storage will be eaten, set another var to find percentage, bound 21, but plus 10 to result, bc 10-30
+    //return bushels * 10-30% var / 100, return 0 if the if statement isnt true
+
+    int newCostOfLand(){
+        //
+    }
+
+
 
 
 
