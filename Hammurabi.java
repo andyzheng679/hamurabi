@@ -46,8 +46,9 @@ public class Hammurabi {
         //System.out.println(starvationDeaths(startPeople, 2000));
         //System.out.println(starvationDeaths(startPeople, 1500));
         //System.out.println(uprising(startPeople, 20));
-       // System.out.println(uprising(startPeople, 50));
-        System.out.println(harvest(1, numOfBushelsToFarmAcres));
+        //System.out.println(uprising(startPeople, 50));
+        //System.out.println(harvest(1, numOfBushelsToFarmAcres));
+        //System.out.println(grainEatenByRats(grainInStorage));
     }
 
     //other methods go here
@@ -229,8 +230,15 @@ public class Hammurabi {
     //create var to hold acres * bushelsUsedAsSeed bc for every bush we plant, we need to subtract bush in storage
     //set grainInStorage field to -= bushelsUsed, return randBushelsPerAcres * acres to see the yield of bush you get per acres
 
+    int grainEatenByRats(int bushels){
+        int randPercentage = rand.nextInt(100); //0-99
 
-
+        if(randPercentage < 40){
+            int eatPercent = rand.nextInt(21) + 10; //10-30
+            return bushels * eatPercent / 100;
+        }
+        return  0;
+    }
 
 
 
