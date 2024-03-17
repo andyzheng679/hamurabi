@@ -14,7 +14,7 @@ public class Hammurabi {
     //start values
     int startPeople = 100;
     int grainInStorage = 2800;
-    int acresOfLand = 100;
+    int acresOfLand = 1000;
     int landValue = 19; //19 bushels/acre
     int numOfBushelsToFarmAcres = 2;
 
