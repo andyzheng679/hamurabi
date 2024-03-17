@@ -11,20 +11,23 @@ public class Hammurabi {
         new Hammurabi().playGame();
     }
 
-    void playGame() {
-        // declare local variables here: grain, population, etc.
-        // statements go after the declations
+    //start values
+    int startPeople = 100;
+    int grainInStorage = 2800;
+    int acresOfLand = 100;
+    int landValue = 19; //19 bushels/acre
+    int numOfBushelsToFarmAcres = 2;
 
-
-        //start values
-        int startPeople = 100;
-        int grainInStorage = 2800;
-        int acresOfLand = 100;
-        int landValue = 19; //19 bushels/acre
 //        Each person needs at least 20 bushels of grain per year to survive
 //        Each person can farm at most 10 acres of land
 //        It takes 2 bushels of grain to farm an acre of land
 //        The market price for land fluctuates yearly
+
+
+    void playGame() {
+        // declare local variables here: grain, population, etc.
+        // statements go after the declations
+
 
 
 
@@ -42,8 +45,9 @@ public class Hammurabi {
         //System.out.println(plagueDeaths(startPeople));
         //System.out.println(starvationDeaths(startPeople, 2000));
         //System.out.println(starvationDeaths(startPeople, 1500));
-        System.out.println(uprising(startPeople, 20));
-        System.out.println(uprising(startPeople, 50));
+        //System.out.println(uprising(startPeople, 20));
+       // System.out.println(uprising(startPeople, 50));
+        System.out.println(harvest(1, numOfBushelsToFarmAcres));
     }
 
     //other methods go here
@@ -214,9 +218,16 @@ public class Hammurabi {
     }
     //this was in the read me
 
-    int harvest(int acres, int bushelsUsedAsSeed){
-        //
+    int harvest(int acres, int bushelsUsedAsSeed){  //acres = askHowManyAcresToPlant, bushelsUsedAsSeed = numOfBushelsToFarmAcres
+        int randBushelsPerAcres = rand.nextInt(6) + 1;
+        int bushelsUsed = acres * bushelsUsedAsSeed;
+        grainInStorage -= bushelsUsed;
+        return randBushelsPerAcres * acres;
     }
+    ///acres = askHowManyAcresToPlant, bushelsUsedAsSeed = numOfBushelsToFarmAcres("fields" It takes 2 bushels of grain to farm an acre of land)
+    //create var to hold rand num, bound is 6, but add 1 to result, 0-5 to 1-6
+    //create var to hold acres * bushelsUsedAsSeed bc for every bush we plant, we need to subtract bush in storage
+    //set grainInStorage field to -= bushelsUsed, return randBushelsPerAcres * acres to see the yield of bush you get per acres
 
 
 
