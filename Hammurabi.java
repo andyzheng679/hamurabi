@@ -49,6 +49,7 @@ public class Hammurabi {
         //System.out.println(uprising(startPeople, 50));
         //System.out.println(harvest(1, numOfBushelsToFarmAcres));
         //System.out.println(grainEatenByRats(grainInStorage));
+        //System.out.println(newCostOfLand());
     }
 
     //other methods go here
@@ -245,8 +246,13 @@ public class Hammurabi {
     //return bushels * 10-30% var / 100, return 0 if the if statement isnt true
 
     int newCostOfLand(){
-        //
+        int randNum = rand.nextInt(7);
+        int landPrice = randNum + 17;
+
+        return landPrice;
     }
+    // create rand num var, bound 7 bc 0-6
+    //create a land price var, = ran num var + 17 bc land cost between 17-23
 
 
 
