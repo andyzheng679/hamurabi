@@ -28,16 +28,102 @@ public class Hammurabi {
         // declare local variables here: grain, population, etc.
         // statements go after the declations
 
+//        O great Hammurabi!
+//                You are in year 1 of your ten year rule.
+//                In the previous year 0 people starved to death.
+//        In the previous year 5 people entered the kingdom.
+//        The population is now 100.
+
+//        We harvested 3000 bushels at 3 bushels per acre.                          //all of this is pt 2, dont print at start of game
+//                Rats destroyed 200 bushels, leaving 2800 bushels in storage.
+//                The city owns 1000 acres of land.
+//                Land is currently worth 19 bushels per acre.
+        int year = 1;
+        int population = startPeople;
+        int deathsPerStarvation = 0;  //starvationDeaths method will update this
+        int numOfPeopleEnterKingdom = 0; //immigrants method will update this
 
 
 
-//        int year = 0;
-//        while (year < 10){
-//            //
-//            //
-//            //
-//            year++;
-//        }
+        while(year <= 10){
+            System.out.println("O great Hammurabi!");
+            System.out.println("You are in year " + year + " of your ten year rule.");
+            System.out.println("In the previous year " + deathsPerStarvation + " people starved to death.");
+            System.out.println("In the previous year " + numOfPeopleEnterKingdom + " people entered the kingdom.");
+            System.out.println("The population is now " + population + ".");
+
+            //asking user for input
+            int acresBought =askHowManyAcresToBuy(landValue, grainInStorage);
+            acresOfLand += acresBought;
+            grainInStorage -= acresBought * landValue;
+
+            int acresSold = 0;
+            if(acresBought == 0){
+                acresSold = askHowManyAcresToSell(acresOfLand);
+                acresOfLand -= acresSold;
+                grainInStorage += acresSold * landValue;
+            }
+
+            int grainsUsedToFeed = askHowMuchGrainToFeedPeople(grainInStorage);
+            grainInStorage -= grainsUsedToFeed;
+
+            int numOfAcresPlanted = askHowManyAcresToPlant(acresOfLand, population, grainInStorage);
+            grainInStorage -= numOfAcresPlanted * numOfBushelsToFarmAcres;
+
+
+            //negative outcomes
+            int deathByPlague = plagueDeaths(population);
+            population -= deathByPlague;
+            if(deathByPlague > 0){
+                System.out.println("Kingdom got hit by the plague, lost half of your population");
+            }
+
+
+
+            int starvationDeathsVar = starvationDeaths(population, grainsUsedToFeed);
+            deathsPerStarvation = starvationDeathsVar;
+            population -= starvationDeathsVar;
+
+
+            if(uprising(population, starvationDeathsVar) == true){
+                System.out.println("Uprising, you have been over thrown.");
+                break;
+            }
+
+            int hungryRats = (grainEatenByRats(grainInStorage));
+            grainInStorage -= hungryRats;
+
+            //other stuff
+            numOfPeopleEnterKingdom = immigrants(population, acresOfLand, grainInStorage);
+            population += numOfPeopleEnterKingdom;
+
+            int harvesting = harvest(numOfAcresPlanted, numOfBushelsToFarmAcres);
+            grainInStorage += harvesting;
+
+            landValue = newCostOfLand();
+
+            //print out pt 2
+            System.out.println("We harvested " + harvesting + " bushels at " + (harvesting/numOfAcresPlanted) + " bushels per acre. ");
+            System.out.println("Rats destroyed " + hungryRats + " bushels, leaving " + grainInStorage + " bushels in storage.");
+            System.out.println("The city owns " + acresOfLand + " acres of land.");
+            System.out.println("Land is currently worth " + landValue + " bushels per acre.");
+
+//            We harvested 3000 bushels at 3 bushels per acre.                          //all of this is pt 2, dont print at start of game
+//                Rats destroyed 200 bushels, leaving 2800 bushels in storage.
+//                The city owns 1000 acres of land.
+//                Land is currently worth 19 bushels per acre.
+            year++;
+
+
+
+
+        }
+
+        finalSummary(year - 1, population, acresOfLand, grainInStorage);
+
+
+
+
         //System.out.println(askHowManyAcresToBuy(landValue, grainInStorage));
         //System.out.println(askHowManyAcresToSell(100));
         //System.out.println(askHowMuchGrainToFeedPeople(grainInStorage));
@@ -85,7 +171,7 @@ public class Hammurabi {
     //else set bool to true
 
     int askHowManyAcresToSell(int acresOwned){
-        System.out.println("Enter how many acres you want to see: ");
+        System.out.println("Enter how many acres you want to sell: ");
         int acresToSell = 0;
         boolean validInput = false;
 
@@ -253,6 +339,18 @@ public class Hammurabi {
     }
     // create rand num var, bound 7 bc 0-6
     //create a land price var, = ran num var + 17 bc land cost between 17-23
+
+    void finalSummary(int year, int population, int acresOfLand, int grainInStorage){
+        System.out.println("10 year rule comes to an end");
+        System.out.println("Year of rule: " + year);
+        System.out.println("Population: " + population);
+        System.out.println("Acres of land owned: " + acresOfLand);
+        System.out.println("Grain in Storage: " + grainInStorage);
+
+        if(population < startPeople / 2){
+            System.out.println("Half of the starting population died, your rule sucks");
+        }
+    }
 
 
 
